@@ -1,6 +1,6 @@
 # An Introduction to CDMetaPOP
 #### _Tutorial Contributors: Travis Seaborn, Erin Landguth_
-#### _Tutorial Version 0.1_
+#### _Tutorial Version 0.1 ; Last Updated: 7/8/2021
 Welcome to the CDMetaPOP tutorial! This release includes installation instructions, version notes, some examples, and technical documentation. CDMetaPOP is an individual-based, eco-evolutionary model for spatially-explicit simulation of population viability in landscape demogenetics. This tutorial will walk you through running CDMetaPOP, and then visualizing some of the outputs.
   
 Welcome to the CDMetaPOP tutorial! This release includes installation instructions, version notes, some examples, and technical documentation. 
