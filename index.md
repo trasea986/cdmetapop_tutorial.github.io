@@ -1,10 +1,15 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 #### _Tutorial Contributors: Travis Seaborn, Erin Landguth_
 
 Welcome to the CDMetaPOP tutorial! This release includes installation instructions, version notes, some examples, and technical documentation. CDMetaPOP is an individual-based, eco-evolutionary model for spatially-explicit simulation of population viability in landscape demogenetics. This tutorial will walk you through running CDMetaPOP, and then visualizing some of the outputs.
   
 Welcome to the CDMetaPOP tutorial! This release includes installation instructions, version notes, some examples, and technical documentation. 
   
-## Repository contents
+#### Repository contents
   
 Included in this release are the following:
 
@@ -15,17 +20,17 @@ doc -> README.txt, user manual, history, and disclaimer
 data -> test example files
   
 
-## Requirements and Pre-requisite Software
+#### Requirements and Pre-requisite Software
 
 CDMetaPOP requires the Python2.7.x interpreter, NumPy package, and SciPy package. Remember that Python modules usually require particular Python interpreters, so be sure the version ID for any external Python module or package (e.g. NumPy or others) matches the version of your Python interpreter (normally v2.7.x). To avoid Python installation errors, we highly recommend installing Python from any number of the freely available bundlers, e.g., Canopy, ActiveState, Anaconda.
 
-## CDMetaPOP v1.0 Installation
+#### CDMetaPOP v1.0 Installation
 
 Linux or Windows: Installation is done by unpacking the CDMetaPOP Archive. Navigate to the directory on your PC where you wish to install CDMetaPOP, and unpack the supplied zip archive file using a free archive tool like 7Zip (7z.exe), Pkunzip, Unzip, or an equivalent. Seven-Zip (7Z.exe) is highly recommended since it can handle all common formats on Windows, MAC OS X and Linux. 
 
 On Windows, it is best to setup a project specific modeling subdirectory to perform your modeling outside of any folder that has spaces in its name (like "My Documents").
 
-## Example CDMetaPOP Run
+#### Example CDMetaPOP Run
 
 The example run is for 7 patches representing an effective distance matrix calculated using a least-cost path algorithm through riverine distance . To run the following example, follow these steps:
 
@@ -41,20 +46,20 @@ The example run is for 7 patches representing an effective distance matrix calcu
 
 6. Run the program: There are a number of ways to run this program. If you are using a command shell you can run the program by typing “python CDMetaPOP.py C:/”homedirectorylocation”/data PopVars.csv output_test”. Or a short-cut if your data is located at the same folder level as the src folder: 
 
- ```shell
+```shell
 python CDMetaPOP.py ../data/ PopVars.csv output_test
 ```
 Note that there are 5 arguments here that must be included with spaces in between: 
 
-*	“python” starts python, for example from the command line. Note that other python environments may have different calls here. In PyLab (the IDE distributed with Canopy), the call is “run”. 
+a)	“python” starts python, for example from the command line. Note that other python environments may have different calls here. In PyLab (the IDE distributed with Canopy), the call is “run”. 
 
-*	“CDMetaPOP.py” runs CDMetaPOP program.
+b)	“CDMetaPOP.py” runs CDMetaPOP program.
 
-* “C:/”homedirectorylocation”/data” is the directory location of the input test files. You can point this directory to other project files, for example. We suggest not having any spaces in your directory names. So as projects accumulate you can rename input folders that contain the project specific files (e.g., dataWestslope or dataBullTrout).
+c) “C:/”homedirectorylocation”/data” is the directory location of the input test files. You can point this directory to other project files, for example. We suggest not having any spaces in your directory names. So as projects accumulate you can rename input folders that contain the project specific files (e.g., dataWestslope or dataBullTrout).
 
-* “PopVars.csv” is the parameter file (comma delimited) which can be renamed (e.g., “PopVars_WCT.csv”). Caution should be taken when going between operating systems and saving this file as a .csv.
+d) “PopVars.csv” is the parameter file (comma delimited) which can be renamed (e.g., “PopVars_WCT.csv”). Caution should be taken when going between operating systems and saving this file as a .csv.
 
-* “output_test” is the name of the directory that will be created with CDMetaPOP output in the directory specified by the third argument above.
+e) “output_test” is the name of the directory that will be created with CDMetaPOP output in the directory specified by the third argument above.
 
 Check for successful model run completion: The program will provide step-by-step output in the Shell window. Once completed, a simulation time will be printed out and folders batchrun0mcrun0, batchrun0mcrun1, batchrun0mcrun2, batchrun1mcrun0, and batchrun2mcrun0 will be created in your CDMetaPOP home directory to store output from the separate batch and/or Monte-Carlo runs (each line in the PopVars file corresponds to a separate batchrun and the specified ‘mcruns’ for each batch). These folders are located in the data folder specified in above step. The output folder will have a unique date/time stamp after the name of the output folder in case you want to run multiple CDMetaPOP runs in this same directory. The program will also provide a log file with program steps in your specified output directory. If parameters are such that population becomes extinct before specified generation time, then program will end. The program will provide error and feedback for parameters that are outside of ranges or incorrectly entered.
 
