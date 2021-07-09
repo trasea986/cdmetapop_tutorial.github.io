@@ -10,20 +10,28 @@ The goal of this tutorial is to introduce you to running CDMetaPOP and visualizi
 4) Visualize population size, average size of an individual, and the allele frequencies related the locus under selection and a neutral locus.
 
 _Important tutorial note: we are not running any sort of burn in or testing to see if the system has gone to equilibrium meaning we ran the model for long enough. These are important considerations when running simulations._
-  
+   
+   
+   
 #### Repository contents
 Included in this release are the following:
 src -> CDMetaPOP source files
 doc -> README.txt, user manual, history, and disclaimer
 data -> test example files
 
+
+
 #### Requirements and Pre-requisite Software
 CDMetaPOP requires the Python2.7.x interpreter, NumPy package, and SciPy package. Remember that Python modules usually require particular Python interpreters, so be sure the version ID for any external Python module or package (e.g. NumPy or others) matches the version of your Python interpreter (normally v2.7.x). To avoid Python installation errors, we highly recommend installing Python from any number of the freely available bundlers, e.g., Canopy, ActiveState, Anaconda.
+
+
 
 #### CDMetaPOP v1.0 Installation
 Linux or Windows: Installation is done by unpacking the CDMetaPOP Archive. Navigate to the directory on your PC where you wish to install CDMetaPOP, and unpack the supplied zip archive file using a free archive tool like 7Zip (7z.exe), Pkunzip, Unzip, or an equivalent. Seven-Zip (7Z.exe) is highly recommended since it can handle all common formats on Windows, MAC OS X and Linux. 
 
 On Windows, it is best to setup a project specific modeling subdirectory to perform your modeling outside of any folder that has spaces in its name (like "My Documents").
+
+
 
 #### CDMetaPOP Example: Inputs
 The example run is for 7 patches representing an effective distance matrix calculated using a least-cost path algorithm through riverine distance. We will be using the files with '_tut' in their name, for 'tutorial'. For additional examples of inputs, see the various files each directory within the './data' directory
@@ -52,6 +60,7 @@ For additional examples of inputs, see ‘PopVars.csv’.
 5. Patch Variable Distance Matrix ('Cdmatrix_tut.csv'): File that describes the connectivity of the patches. Multiple inputs are allowed, and the type of values should be specified within the 'PopVars.csv' file. For example, you may have a probability of dispersal matrix or a matrix of resistance values.
 
 
+
 #### CDMetaPOP Exampling: Running Simulations
 If you use python from the command line, then open a terminal window and change your shell directory to the CDMetaPOP src home directory after you have unzipped the files.
 
@@ -78,8 +87,12 @@ Note that there are 5 arguments here that must be included with spaces in betwee
 
 5) “tutorial_output” is the name of the directory that will be created with CDMetaPOP output in the directory specified by the third argument above.
 
+
+
 #### Check for successful model run completion 
 The program will provide step-by-step output in the Shell window. Once completed, a simulation time will be printed out and folders batchrun0mcrun0, batchrun0mcrun1, batchrun0mcrun2, batchrun1mcrun0, and batchrun2mcrun0 will be created in your CDMetaPOP home directory to store output from the separate batch and/or Monte-Carlo runs (each line in the PopVars file corresponds to a separate batchrun and the specified ‘mcruns’ for each batch). These folders are located in the data folder specified in above step. The output folder will have a unique date/time stamp after the name of the output folder in case you want to run multiple CDMetaPOP runs in this same directory. The program will also provide a log file with program steps in your specified output directory. If parameters are such that population becomes extinct before specified generation time, then program will end. The program will provide error and feedback for parameters that are outside of ranges or incorrectly entered.
+
+
 
 #### Importing data to R
 There are multiple ways to handle the outputs of CDMetaPOP. For the purposes of this tutorial, we are going to input the outputs that write to you drive as "indXX.csv", where XX is the year being output. The number of years the simulations run, and which years are output, can be set using the 'PopVars' file.
@@ -146,6 +159,8 @@ data_df$YCOORD <- as.numeric(data_df$YCOORD)
 data_df <- data_df %>%
   filter(year != "-1" & year != "0")
 ```
+
+
 
 #### Summarizing the outputs
 Now that we have our dataframe, where each individual is a row, we are ready to summarize what is happening during the simulation. The first summary we might want to know is the total number of individuals. Here we are not grouping by the PatchID, but you might want to do that for your analysis.
@@ -218,6 +233,8 @@ allele_freq_df$Locus <- as.factor(allele_freq_df$Locus)
 levels(allele_freq_df$Locus) <- c("Adaptive", "Neutral")
 ```
 
+
+
 #### Vizualization of Summary Tables
 Next, we are going to create three figures and then combine them. The first figure will be a line graph of the population trend; the second will be the sizes; the third will be the allele proportions.
 
@@ -256,6 +273,7 @@ complete <- plot_grid(pop_plot, bottom, ncol = 1)
 ggsave("CDMetaPOP_tutorial_output.png", plot = complete,
        width = 30, height = 20, units = "cm")
 ```  
+
 
 #### Below you can see the final output from the tutorial data
 ![CDMetaPOP_tutorial_output](https://user-images.githubusercontent.com/10428038/125006290-9cd26780-e012-11eb-8eca-a1343a2c6d22.png)
