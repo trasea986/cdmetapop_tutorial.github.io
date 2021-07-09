@@ -43,24 +43,24 @@ Double check that the 3 directories provided in the archive (data, doc, src) are
 
 
 ##### There are multiple input files:
-1. Population Variables and Settings ('PopVars_tut.csv'): The included file ‘PopVars_tut.csv’ in the data directory specifies the parameters that can be changed and used in our sample CDMetaPOP run. Open this file in your editor of choice. A spreadsheet program, like Microsoft Excel, allows for easy editing of the tabular values. There will be 3 lines of information in ‘PopVars.csv’: a header line and 2 lines of information corresponding to 2 separate CDMetaPOP runs (batch process). See Table 1 in user manual which contains a breakdown for each column header and the parameters that can be changed. The ‘Input’ in the table listed is for the first row in the file. Make sure you save this file in the same format – a comma delimited file – when you make changes to the parameters. Do not change the ‘Input’ (first row) labeling. Select ‘Yes’ or ‘OK’ for any Excel questions about saving in this format.
+a) Population Variables and Settings ('PopVars_tut.csv'): The included file ‘PopVars_tut.csv’ in the data directory specifies the parameters that can be changed and used in our sample CDMetaPOP run. Open this file in your editor of choice. A spreadsheet program, like Microsoft Excel, allows for easy editing of the tabular values. There will be 3 lines of information in ‘PopVars.csv’: a header line and 2 lines of information corresponding to 2 separate CDMetaPOP runs (batch process). See Table 1 in user manual which contains a breakdown for each column header and the parameters that can be changed. The ‘Input’ in the table listed is for the first row in the file. Make sure you save this file in the same format – a comma delimited file – when you make changes to the parameters. Do not change the ‘Input’ (first row) labeling. Select ‘Yes’ or ‘OK’ for any Excel questions about saving in this format.
 
 The file ‘PopVars_tut.csv’ defines the patch files in the first column and settings across the simulated landscape. The included files ‘PatchVars_tut.csv’ will also be in the directory (./data).
 
 For additional examples of inputs, see ‘PopVars.csv’.
 
 
-2. Patch Variables and Settings ('PatchVars_tut.csv'): Input file for patch level controls. An easy way to create this file is to establish first X,Y locations for each patch and develop raster surfaces for each variable (temperature, grow days, fitness values, and mortality values linked to climate or harvesting spatially). Then use a software program (‘raster’ in R or ArcGIS) to extract variables under each X,Y patch location, such as temperature
+b) Patch Variables and Settings ('PatchVars_tut.csv'): Input file for patch level controls. An easy way to create this file is to establish first X,Y locations for each patch and develop raster surfaces for each variable (temperature, grow days, fitness values, and mortality values linked to climate or harvesting spatially). Then use a software program (‘raster’ in R or ArcGIS) to extract variables under each X,Y patch location, such as temperature
 
 ‘ClassVars.csv’ and 'allelefrequency.csv' files are specified in the ‘PatchVars.csv’ file and examples will be in the ./data/classvars/ and ./data/genes/ directories.
 
 
-3. Class Variables and Settings ('Classvars_tut.csv'): Input file for variables that will vary with age/stage.
+c) Class Variables and Settings ('Classvars_tut.csv'): Input file for variables that will vary with age/stage.
 
 
-4. Allele Frequencies ('allelefrequency_tut.csv'): Input file created for initializing allele frequencies.
+d) Allele Frequencies ('allelefrequency_tut.csv'): Input file created for initializing allele frequencies.
 
-5. Patch Variable Distance Matrix ('Cdmatrix_tut.csv'): File that describes the connectivity of the patches. Multiple inputs are allowed, and the type of values should be specified within the 'PopVars.csv' file. For example, you may have a probability of dispersal matrix or a matrix of resistance values.
+e) Patch Variable Distance Matrix ('Cdmatrix_tut.csv'): File that describes the connectivity of the patches. Multiple inputs are allowed, and the type of values should be specified within the 'PopVars.csv' file. For example, you may have a probability of dispersal matrix or a matrix of resistance values.
 
 
 
