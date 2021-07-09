@@ -16,7 +16,9 @@ _Important tutorial note: we are not running any sort of burn in or testing to s
 #### Repository contents
 Included in this release are the following:
 src -> CDMetaPOP source files
+
 doc -> README.txt, user manual, history, and disclaimer
+
 data -> test example files
 
 
