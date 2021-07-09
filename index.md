@@ -258,7 +258,7 @@ ggsave("CDMetaPOP_tutorial_output.png", plot = complete,
 ```  
 #### Below you can see the final output from the tutorial data
 <center>
-![Above: Results!](images/CDMetaPOP_tutorial_output.png)
+![Above: Results!](CDMetaPOP_tutorial_output.png)
 </center> 
 
 This gives us a summary of a couple of things that might be of interest to us from our simulation parameters. Feel free to reach out if you have general tutorial questions or want to see this expanded: tseaborn at uidaho.edu.
