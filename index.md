@@ -278,7 +278,7 @@ ggsave("CDMetaPOP_tutorial_output.png", plot = complete,
 ```  
 
 
-#### Below you can see the final output from the tutorial data
+#### Below you can see the final output from the tutorial data:
 ![CDMetaPOP_tutorial_output](https://user-images.githubusercontent.com/10428038/125006290-9cd26780-e012-11eb-8eca-a1343a2c6d22.png)
 
 
