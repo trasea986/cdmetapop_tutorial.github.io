@@ -261,4 +261,4 @@ ggsave("CDMetaPOP_tutorial_output.png", plot = complete,
 ![CDMetaPOP_tutorial_output](https://user-images.githubusercontent.com/10428038/125006290-9cd26780-e012-11eb-8eca-a1343a2c6d22.png)
 
 
-####This gives us a summary of a couple of things that might be of interest to us from our simulation parameters. Feel free to reach out if you have general tutorial questions or want to see this expanded: tseaborn at uidaho.edu. Have fun running simulations!
+#### This gives us a summary of a couple of things that might be of interest to us from our simulation parameters. Feel free to reach out if you have general tutorial questions or want to see this expanded: tseaborn at uidaho.edu. Have fun running simulations!
