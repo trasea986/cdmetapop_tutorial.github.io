@@ -69,7 +69,7 @@ If you use python from the command line, then open a terminal window and change 
 
 For example:
 ```shell
-cd C:\directory\CDMetaPOP-master-fresh-pub\src
+cd C:\'put your directory information here'\CDMetaPOP-master-fresh-pub\src
 ```
 
 Next, run the program: There are a number of ways to run this program. If you are using a command shell you can run the program by typing “python CDMetaPOP.py C:/”homedirectorylocation”/data PopVars.csv output_test”.
