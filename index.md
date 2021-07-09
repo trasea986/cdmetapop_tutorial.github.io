@@ -122,7 +122,7 @@ data_df = list.files(pattern = paste("ind*", sep=''), #this is the pattern for p
 #you might not always want the full directory, but I've shown it here in case you are running replicates or need to keep track of the batches
 
 #break up the column with the file name to delineate the year of the output
-data_df <- separate(data = output_files, col = filename, into = c('junk', 'junk1', 'year'), sep = "/")
+data_df <- separate(data = data_df, col = filename, into = c('junk', 'junk1', 'year'), sep = "/")
 data_df <- separate(data = data_df, col = year, into = c('junk2', 'year'), sep = "d")
 data_df <- separate(data = data_df, col = year, into = c('year', 'junk3'), sep = ".c")
 
@@ -248,7 +248,7 @@ pop_plot <- ggplot(pop_df, aes(x = year, y = pop)) +
   geom_line(color = "black", size = 1.2) +
   xlab("Year") +
   ylab("Population Size") +
-  scale_x_continuous(n.breaks = 7) +
+  scale_x_continuous(n.breaks = 7) + #adjust to match to multiple of your data
   theme_bw(base_size = 14)
   
 size_plot <- ggplot(size_df, aes(x = year, y = average)) + 
