@@ -1,5 +1,5 @@
 #### _Tutorial Contributors: Travis Seaborn, Erin Landguth_
-##### _Version 0.1, Last updated July 9th 2021_
+##### _Version 0.1, Last updated July 15th 2021_
 Welcome to the tutorial on creating a patch variable file for a CDMetaPOP simulation. This short tutorial gives an example of how to extract environmental data and use it to parameterize mortality at an individual patch. We will be working with 40 random patches along a stream corridor.
 
 We will be using R to:
