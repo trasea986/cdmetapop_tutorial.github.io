@@ -58,7 +58,9 @@ bio10_study_area <- crop(worldclim$bio10, ext_poly)
 plot(bio10_study_area)
 points(points_spat)
 ```
-![env_data](https://user-images.githubusercontent.com/10428038/125866526-f735deb7-eeb2-4962-9f5e-53385f583f44.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/10428038/125866526-f735deb7-eeb2-4962-9f5e-53385f583f44.png">
+</p>
 
 Now that we have some environmental data, we will be extracting Bioclim 10 and 11, which represent Mean Temperature of Warmest Quarter and Mean Temperature of Coldest Quarter. We will use these for our two seasons. Obviously for your own system, this may not be appropriate and does introduce a lot of asumptions into the simulations. The Bioclim temperatures are in 1/10 degrees celsiu, so we are also going to change that to celsius.
 
