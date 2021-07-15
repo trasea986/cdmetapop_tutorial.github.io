@@ -9,3 +9,7 @@ Welcome to the CDMetaPOP tutorials home page! This website covers an introductio
 [Input File Creation: Distance Matrix](./distance.md): Covers examples of calculating distance matrices from your GPS / patch locations.
 
 [Input File Creation: Patch / Environmental Data](./patches.md): How to take your list of points and extract values from the landscape to include in the CDMetaPOP simulation.
+
+<p align="center">
+  <img max-width=25% height=auto src="https://user-images.githubusercontent.com/10428038/125827641-fd5673c9-6e88-46c9-8141-82c908d82afa.png">
+</p>
