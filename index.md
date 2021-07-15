@@ -4,7 +4,7 @@ Welcome to the CDMetaPOP tutorials home page! This website covers an introductio
 
 #### Tutorial Pages:
 
-[Introductory Tutorial](./being_tut.md): Start here, which is a beginner tutorial using inputs provided in the main CDMetaPOP repository. This tutorial includes information from installing CDMetaPOP to visualizing outputs.
+[Introductory Tutorial](./begin_tut.md): Start here, which is a beginner tutorial using inputs provided in the main CDMetaPOP repository. This tutorial includes information from installing CDMetaPOP to visualizing outputs.
 
 [Input File Creation: Distance Matrix](./distance.md): Covers examples of calculating distance matrices from your GPS / patch locations.
 
