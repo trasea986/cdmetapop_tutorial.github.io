@@ -288,7 +288,7 @@ allele_plot <- ggplot(allele_freq_df_sum, aes(x = year, y = mean_freq, color = A
   geom_ribbon(aes(ymin=mean_freq-stdev_freq, ymax=mean_freq+stdev_freq, group = Allele), fill="lightgray", color="lightgray", alpha=.5) +
   geom_line(size = 1.2) +
   facet_wrap(~Locus) +
-  scale_color_manual(values = c("gold", "darkgrey"))+
+  scale_color_manual(values = c("darkblue", "darkgreen"))+
   xlab("Year") +
   ylab("Allele Frequency") +
   scale_x_continuous(n.breaks = 7) +
@@ -307,7 +307,7 @@ ggsave("CDMetaPOP_tutorial_output.png", plot = complete,
 
 
 #### Below you can see the final output from the tutorial data:
-![CDMetaPOP_tutorial_output](https://user-images.githubusercontent.com/10428038/126007005-acfe2d9f-0104-4a79-8d5c-d226e6b7e503.png)
+![CDMetaPOP_tutorial_output](https://user-images.githubusercontent.com/10428038/126015519-72a2c499-2ec3-44fa-9340-5e4ea31185cc.png)
 
 
 ### This gives us a summary of a couple of things that might be of interest to us from our simulation parameters. Feel free to reach out if you have general tutorial questions or want to see this expanded: tseaborn at uidaho.edu. Have fun running simulations!
