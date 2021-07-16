@@ -10,6 +10,8 @@ The goal of this tutorial is to introduce you to running CDMetaPOP and visualizi
 3) Summarize the outputs of the simulations
 4) Visualize population size, average size of an individual, and the allele frequencies related the locus under selection and a neutral locus.
 
+We will be doing 10 replicates, but only 1 batch (see manual for output naming conventions).
+
 _Important tutorial note: we are not running any sort of burn in or testing to see if the system has gone to equilibrium meaning we ran the model for long enough. These are important considerations when running simulations._
    
    
@@ -119,17 +121,14 @@ data_df = list.files(pattern = paste("ind*", sep=''), #this is the pattern for p
                           recursive = TRUE, 
                           include.dirs = TRUE) %>% 
   map_df(function(x) read_csv(x, col_types = cols(.default = "c")) %>% mutate(filename=paste(dirname((x)),basename(x),sep="/")))
-  
-#you might not always want the full directory, but I've shown it here in case you are running replicates or need to keep track of the batches
 
 #break up the column with the file name to delineate the year of the output
-data_df <- separate(data = data_df, col = filename, into = c('junk', 'junk1', 'year'), sep = "/")
+data_df <- separate(data = data_df, col = filename, into = c('junk1', 'replicate', 'year'), sep = "/")
 data_df <- separate(data = data_df, col = year, into = c('junk2', 'year'), sep = "d")
 data_df <- separate(data = data_df, col = year, into = c('year', 'junk3'), sep = ".c")
 
 #set column data types after you remove columns that we do not want. You will likely want different sets of columns depending on your research question.
 
-data_df$junk <- NULL
 data_df$junk1 <- NULL
 data_df$junk2 <- NULL
 data_df$junk3 <- NULL
@@ -157,6 +156,7 @@ data_df$age <- as.numeric(data_df$age)
 data_df$year <- as.numeric(data_df$year)
 data_df$XCOORD <- as.numeric(data_df$XCOORD)
 data_df$YCOORD <- as.numeric(data_df$YCOORD)
+data_df$replicate <- as.factor(data_df$replicate)
 
 #one last clean up step: removing the initialization individuals (year == -1) and year 0 individuals
 
@@ -171,15 +171,15 @@ Now that we have our dataframe, where each individual is a row, we are ready to 
 
 ```r
 pop_df <- data_df %>%
-  group_by(year, .drop = FALSE) %>% #we use .drop = FALSE here in case some years don't have any individuals, but we still want that data point for plotting
+  group_by(replicate, year, .drop = FALSE) %>% #we use .drop = FALSE here in case some years don't have any individuals, but we still want that data point for plotting
   summarise(pop = n())
 ```
 
-The next piece on our checklist was to look for differences in size. We are going to calculate the mean and standard deviation of the size column through time. Note: you could do some of this internally in ggplot, but I prefer to keep it outside.
+The next piece on our checklist was to look for differences in size. We are going to calculate the mean and standard deviation of the size column through time in case you want to see the table for each replicate. Later we will calculate average and standard deviation across all replicates. Note: you could do some of this internally in ggplot, but I prefer to keep it outside.
 
 ```r
 size_df <- data_df %>%
-  group_by(year, .drop = FALSE) %>%
+  group_by(replicate, year, .drop = FALSE) %>%
   summarize(average = mean(size), stdev = sd(size))
 ```
 
@@ -190,11 +190,11 @@ For a full description of locus and allele naming conventions, please see the ma
 First, the neutral locus:
 ```r
 L1_df <- data_df %>%
-  group_by(year, .drop = FALSE) %>%
+  group_by(replicate, year, .drop = FALSE) %>%
   summarise_at(vars(L1A0:L1A1), sum, na.rm = TRUE)
 
 #add in population so we can focus on allele frequencies
-L1_df <- merge(L1_df, pop_df, by="year")
+L1_df <- merge(L1_df, pop_df, by=c("replicate", "year"))
 
 #because individuas are diploid, we need multiple the population by 2 to get allele frequency
 L1_df$total <- (L1_df$pop * 2)
@@ -210,11 +210,11 @@ Now we are going to do the same thing but with the L0 locus (the one under selec
 
 ```r
 L0_df <- data_df %>%
-  group_by(year, .drop = FALSE) %>%
+  group_by(replicate, year, .drop = FALSE) %>%
   summarise_at(vars(L0A0:L0A1), sum, na.rm = TRUE)
 
 #add in population so we can focus on allele frequencies
-L0_df <- merge(L0_df, pop_df, by="year")
+L0_df <- merge(L0_df, pop_df, by=c("replicate", "year"))
 
 #because individuas are diploid, we need multiple the population by 2 to get allele frequency
 L0_df$total <- (L0_df$pop * 2)
@@ -244,33 +244,60 @@ Next, we are going to create three figures and then combine them. The first figu
 
 _Organism size is a little weird below due to not running any sort of burn in period._
 
+The first step is to calculat mean and standard deviation by year for the three dataframes of interest across all replicates. This will give us the summaries of all of the replicates. I've kept the original dataframes / tables from above in case the intermediate objects are useful to see.
 ```r
-pop_plot <- ggplot(pop_df, aes(x = year, y = pop)) + 
+pop_df_sum <- pop_df %>%
+  group_by(year) %>%
+  summarise(mean_pop = mean(pop),
+            stdev_pop = sd(pop))
+
+#size is a bit different, because the data frame / table we produced above let us know what was going on with each replicate.
+size_df_sum <- data_df %>%
+  group_by(year) %>%
+  summarize(mean_size = mean(size),
+            stdev_size = sd(size))
+
+#the frequencies we need to add some additional group parameters.
+allele_freq_df_sum <- allele_freq_df %>%
+  group_by(year, Locus, Allele) %>%
+  summarise(mean_freq = mean(freq),
+            stdev_freq = sd(freq))
+```
+
+And then next we will create the actual plots and final figure by combining the individual plots.
+
+```r
+pop_plot <- ggplot(pop_df_sum, aes(x = year, y = mean_pop)) + 
+  geom_ribbon(aes(ymin = mean_pop - stdev_pop, ymax = mean_pop + stdev_pop), alpha = .5, fill="lightgray", color="lightgray") +
   geom_line(color = "black", size = 1.2) +
   xlab("Year") +
   ylab("Population Size") +
   scale_x_continuous(n.breaks = 7) + #adjust to match to multiple of your data
   theme_bw(base_size = 14)
-  
-size_plot <- ggplot(size_df, aes(x = year, y = average)) + 
-  geom_ribbon(aes(ymin=average-stdev, ymax=average+stdev), fill="lightgray", color="lightgray", alpha=.6) +
+
+
+size_plot <- ggplot(size_df_sum, aes(x = year, y = mean_size)) + 
+  geom_ribbon(aes(ymin=mean_size-stdev_size, ymax=mean_size+stdev_size), fill="lightgray", color="lightgray", alpha=.5) +
   geom_line(color = "black", size = 1.2) +
   xlab("Year") +
   ylab("Organism Size") +
   scale_x_continuous(n.breaks = 7) +
   theme_bw(base_size = 14)
-  
-allele_plot <- ggplot(allele_freq_df, aes(x = year, y = freq, color = Allele)) + 
+
+allele_plot <- ggplot(allele_freq_df_sum, aes(x = year, y = mean_freq, color = Allele)) + 
+  geom_ribbon(aes(ymin=mean_freq-stdev_freq, ymax=mean_freq+stdev_freq, group = Allele), fill="lightgray", color="lightgray", alpha=.5) +
   geom_line(size = 1.2) +
   facet_wrap(~Locus) +
   scale_color_manual(values = c("gold", "darkgrey"))+
   xlab("Year") +
   ylab("Allele Frequency") +
   scale_x_continuous(n.breaks = 7) +
-  theme_bw(base_size = 14)  
-  
+  theme_bw(base_size = 14) +
+  theme(legend.position = "top")
+
 #first we are going to combine the bottom section
 bottom <- plot_grid(size_plot, allele_plot, ncol = 2)
+#now add pop plot as the top section
 complete <- plot_grid(pop_plot, bottom, ncol = 1)
 
 #last, save the plot
@@ -280,7 +307,7 @@ ggsave("CDMetaPOP_tutorial_output.png", plot = complete,
 
 
 #### Below you can see the final output from the tutorial data:
-![CDMetaPOP_tutorial_output](https://user-images.githubusercontent.com/10428038/125006290-9cd26780-e012-11eb-8eca-a1343a2c6d22.png)
+![CDMetaPOP_tutorial_output](https://user-images.githubusercontent.com/10428038/126007005-acfe2d9f-0104-4a79-8d5c-d226e6b7e503.png)
 
 
 ### This gives us a summary of a couple of things that might be of interest to us from our simulation parameters. Feel free to reach out if you have general tutorial questions or want to see this expanded: tseaborn at uidaho.edu. Have fun running simulations!
