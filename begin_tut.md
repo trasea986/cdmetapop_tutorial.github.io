@@ -28,7 +28,9 @@ data -> test example files
 
 
 #### Requirements and Pre-requisite Software
-CDMetaPOP requires the Python2.7.x interpreter, NumPy package, and SciPy package. Remember that Python modules usually require particular Python interpreters, so be sure the version ID for any external Python module or package (e.g. NumPy or others) matches the version of your Python interpreter (normally v2.7.x). To avoid Python installation errors, we highly recommend installing Python from any number of the freely available bundlers, e.g., Canopy, ActiveState, Anaconda.
+##### CDMetaPOP requires the Python2.7.x interpreter, NumPy package, and SciPy package. 
+
+Remember that Python modules usually require particular Python interpreters, so be sure the version ID for any external Python module or package (e.g. NumPy or others) matches the version of your Python interpreter (normally v2.7.x). To avoid Python installation errors, we highly recommend installing Python from any number of the freely available bundlers, e.g., Canopy, ActiveState, Anaconda.
 
 
 
