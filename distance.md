@@ -1,6 +1,6 @@
 #### _Tutorial Contributors: Travis Seaborn, Erin Landguth_
 ##### _Version 0.1, Last updated July 15th 2021_
-Welcome to the tutorial on creating a pair-wise distance matrix to serve as input for a CDMetaPOP simulation. We are going to cover a one distance option in R, the least-cost path. Now, CDMetaPOP can handle many connectivity matrices, including more complicated connectivity models (such as omnidirectional resistance layers from [Circuitscape](https://github.com/Circuitscape/Circuitscape.jl'). The goal of this tutorial is not to give a robust introduction to 
+Welcome to the tutorial on creating a pair-wise distance matrix to serve as input for a CDMetaPOP simulation. We are going to cover a one distance option in R, the least-cost path. Now, CDMetaPOP can handle many connectivity matrices, including more complicated connectivity models (such as omnidirectional resistance layers from [Circuitscape](https://github.com/Circuitscape/Circuitscape.jl'). The goal of this tutorial is not to give a robust introduction to connectivity modeling.
 
 We are going to build a very simple input, where any location not near one of our sites will have a high value, and everywhere around our sites will have a low value.
 
