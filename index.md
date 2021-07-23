@@ -15,3 +15,5 @@ _Important Note: These tutorials should not be seen as replacements to reading t
 <p align="center">
   <img src="https://user-images.githubusercontent.com/10428038/125827641-fd5673c9-6e88-46c9-8141-82c908d82afa.png">
 </p>
+
+Above: example output. Size of circle is the number of fish in a patch. Colors of the circles represent the temperature at those patches.
