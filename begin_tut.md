@@ -1,6 +1,6 @@
 #### _Tutorial Contributors: Travis Seaborn, Erin Landguth_
-##### _Version 0.2, Last updated April 2022_
-Welcome to the main beginner CDMetaPOP tutorial! This release includes installation instructions, version notes, some examples, and technical documentation. CDMetaPOP is an individual-based, eco-evolutionary model for spatially-explicit simulation of population viability in landscape demogenetics. This tutorial will walk you through running CDMetaPOP, and then visualizing some of the outputs.
+##### _Version 0.2, Last updated April 26 2022_
+Welcome to the main beginner CDMetaPOP tutorial (v1.73)! This release includes installation instructions, version notes, some examples, and technical documentation. CDMetaPOP is an individual-based, eco-evolutionary model for spatially-explicit simulation of population viability in landscape demogenetics. This tutorial will walk you through running CDMetaPOP, and then visualizing some of the outputs.
 
 The goal of this tutorial is to introduce you to running CDMetaPOP and visualizing some of the outputs in R. Please see the [following manual for CDMetaPOP](https://github.com/ComputationalEcologyLab/CDMetaPOP/blob/master/doc/cdmetapop_usermanual.docx) for a full explanation of input files and methodologies for the various modules within CDMetaPOP. The tutorial files are set up to run for 30 years, with a the climate (and increased mortality) updating at year 15. This will change the growth rates by using the temperature-dependent growth module in CDMetaPOP, in addition to increasing the mortality at these patches for individuals without a single allele which confers thermal tolerance.
 
