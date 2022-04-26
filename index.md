@@ -1,5 +1,5 @@
 #### _Tutorial Contributors: Travis Seaborn, Erin Landguth_
-##### _Version 0.1, Last updated July 15th 2021_
+##### _Version 0.2, Last updated April 26 2021_
 Welcome to the CDMetaPOP tutorials home page! This website covers an introduction to running these individual-based models to answer a wide-array of landscape ecology and genetics questions. If you do not see a page/tutorial that you would like covered, please reach out. 
 
 _Important Note: These tutorials should not be seen as replacements to reading the manual_
