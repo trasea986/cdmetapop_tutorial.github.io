@@ -1,8 +1,3 @@
----
-layout: default
-title: Intro Tutorial
-nav_order: 1
----
 
 #### _Tutorial Contributors: Travis Seaborn, Erin Landguth_
 ##### _Version 0.2, Last updated April 26 2022_
